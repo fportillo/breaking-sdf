@@ -46,7 +46,7 @@ public class SimpleDateFormatTest {
 
     @Test(expected = ComparisonFailure.class)
     public void breaksLikeACharm() throws InterruptedException, ExecutionException {
-        System.out.println("\n\n========= Breaks like a charm =======>>");
+        System.out.println("\n\n==== Breaks like a charm  ====>>");
         performMultiThreadExecution(badThreads);
     }
 

@@ -15,7 +15,6 @@ public class DateFormatCaller implements Callable<ExpectedVsActualPair> {
 
     @Override
     public ExpectedVsActualPair call() throws Exception {
-        System.out.println("Hey I'm thread #" + Thread.currentThread().getId() + "running!");
         return new ExpectedVsActualPair(randomDate.getFormatted(), simpleDateFormat.format(randomDate.get()));
     }
 }
