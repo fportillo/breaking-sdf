@@ -15,13 +15,9 @@ import org.junit.Before;
 import org.junit.ComparisonFailure;
 import org.junit.Test;
 
-import br.com.dextra.DateFormatCaller;
-import br.com.dextra.ExpectedVsActualPair;
-import br.com.dextra.RandomDate;
-
 public class SimpleDateFormatTest {
 
-    private static final SimpleDateFormat STATIC_SDF = new SimpleDateFormat(RandomDate.DATE_FORMAT);
+    private SimpleDateFormat staticSdf = new SimpleDateFormat(RandomDate.DATE_FORMAT);
     private static final int NUMBER_OF_CONCURRENT_THREADS = 10;
     private static final int TOTAL_NUMBER_OF_THREADS = 1000;
     private ExecutorService executorService;
@@ -36,7 +32,7 @@ public class SimpleDateFormatTest {
         badThreads = new ArrayList<DateFormatCaller>();
         for (int i = 0; i < TOTAL_NUMBER_OF_THREADS; i++) {
             // using a static sdf will produce inconsistend results
-            badThreads.add(new DateFormatCaller(STATIC_SDF));
+            badThreads.add(new DateFormatCaller(staticSdf));
             // using non static sdf will be good
             goodThreads.add(new DateFormatCaller(new SimpleDateFormat(RandomDate.DATE_FORMAT)));
         }
@@ -58,7 +54,7 @@ public class SimpleDateFormatTest {
             ExecutionException {
         results = executorService.invokeAll(threads);
         executorService.shutdown();
-        executorService.awaitTermination(100, TimeUnit.SECONDS);
+        executorService.awaitTermination(10, TimeUnit.SECONDS);
         int count = 0;
         for (Future<ExpectedVsActualPair> future : results) {
             ExpectedVsActualPair pair = future.get();
