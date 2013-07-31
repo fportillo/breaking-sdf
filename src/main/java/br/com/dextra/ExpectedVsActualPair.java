@@ -1,4 +1,4 @@
-package br.com.almana;
+package br.com.dextra;
 
 public class ExpectedVsActualPair {
 

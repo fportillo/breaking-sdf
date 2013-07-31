@@ -1,4 +1,4 @@
-package br.com.almana;
+package br.com.dextra;
 
 import java.text.SimpleDateFormat;
 import java.util.concurrent.Callable;

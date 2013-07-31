@@ -1,4 +1,4 @@
-package br.com.almana;
+package br.com.dextra;
 
 import static org.junit.Assert.assertEquals;
 
@@ -14,6 +14,10 @@ import java.util.concurrent.TimeUnit;
 import org.junit.Before;
 import org.junit.ComparisonFailure;
 import org.junit.Test;
+
+import br.com.dextra.DateFormatCaller;
+import br.com.dextra.ExpectedVsActualPair;
+import br.com.dextra.RandomDate;
 
 public class SimpleDateFormatTest {
 
